@@ -2,6 +2,7 @@ package com.movietheater.entity;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,18 +10,18 @@ import java.util.Set;
 @Entity
 public class Movie {
     @Id
-    private  String movieId;
+    private String movieId;
     private String actor;
-    private  String content;
-    private String directtor;
-    private  int duration;
-    private  Date fromDate;
+    private String content;
+    private String director;
+    private int duration;
+    private LocalDate fromDate;
     private String movieProductionCompany;
-    private Date toDate;
-    private  String version;
-    private String movieNamEnglish;
+    private LocalDate toDate;
+    private String version;
+    private String movieNameEnglish;
     private String movieNameVN;
-    private  String lageImage;
+    private String largeImage;
     private String smallImage;
 
 

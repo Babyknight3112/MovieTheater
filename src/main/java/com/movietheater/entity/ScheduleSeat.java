@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Entity
 public class ScheduleSeat {
     @Id
-
     private String scheduleSeatId;
 
 
