@@ -3,8 +3,7 @@ package com.movietheater.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -18,10 +17,10 @@ public class Type {
     private String typeName;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "movie_type"
-//    ,joinColumns = @JoinColumn(name = "type_id")
-//    ,inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    private Set<Movie> movies = new HashSet<>();
+////    ,joinColumns = @JoinColumn(name = "type_id")
+////    ,inverseJoinColumns = @JoinColumn(name = "movie_id"))
+//    private Set<Movie> movies = new HashSet<>();
 
 }
