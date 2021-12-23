@@ -1,22 +1,31 @@
 package com.movietheater.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.sql.Timestamp;
-import java.util.Date;
+import lombok.Data;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
+@Data
 public class Promotion {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private  int promotionId;
+
+    @Column(nullable = false)
     private String detail;
+
+    @Column(nullable = false)
     private  int discountLevel;
-    private Timestamp endTime;
+
+    @Column(nullable = false)
+    private LocalDate endTime;
+
     private String image;
-    private Timestamp startTime;
+
+    @Column(nullable = false)
+    private LocalDate startTime;
+
+    @Column(nullable = false)
     private String title;
 
 }

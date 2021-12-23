@@ -15,7 +15,11 @@ public class CinemaRoom {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int cinemaRoomId;
+
+    @Column(nullable = false)
     private String cinemaRoomName;
+
+    @Column(nullable = false)
     private int seatQuantity;
 
 

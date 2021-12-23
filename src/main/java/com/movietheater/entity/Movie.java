@@ -12,17 +12,39 @@ import java.util.*;
 public class Movie {
     @Id
     private String movieId;
+
+    @Column(nullable = false)
     private String actor;
+
+    @Column(nullable = false)
     private String content;
+
+    @Column(nullable = false)
     private String director;
+
+    @Column(nullable = false)
     private int duration;
+
+    @Column(nullable = false)
     private LocalDate fromDate;
+
+    @Column(nullable = false)
     private String movieProductionCompany;
+
+    @Column(nullable = false)
     private LocalDate toDate;
+
+    @Column(nullable = false)
     private String version;
+
+    @Column(nullable = false)
     private String movieNameEnglish;
+
+    @Column(nullable = false)
     private String movieNameVN;
+
     private String largeImage;
+
     private String smallImage;
 
 
@@ -48,7 +70,7 @@ public class Movie {
 
 
 //    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn( name = "cinemaRoom_id", referencedColumnName = "cinemaRoomId")
     private  CinemaRoom cinemaRoom;
 

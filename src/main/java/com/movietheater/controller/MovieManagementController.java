@@ -5,6 +5,7 @@ import com.movietheater.entity.dto.movie_management.MovieResponse;
 import com.movietheater.service.MovieManagementService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -33,12 +34,12 @@ public class MovieManagementController {
     }
 
     @PostMapping("/add")
-    public String addMovie(@RequestBody MovieCreation movieCreation){
+    public String addMovie(@Valid @RequestBody MovieCreation movieCreation){
         return movieManagementService.addMovie(movieCreation);
     }
 
     @PutMapping("/update/id/{id}")
-    public String editMovie(@PathVariable("id") String movieId, @RequestBody MovieCreation movieCreation){
+    public String editMovie(@PathVariable("id") String movieId, @Valid @RequestBody MovieCreation movieCreation){
         return movieManagementService.editMovie(movieId, movieCreation);
     }
 

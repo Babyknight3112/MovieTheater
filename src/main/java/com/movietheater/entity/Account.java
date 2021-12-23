@@ -2,7 +2,7 @@ package com.movietheater.entity;
 
 
 import com.sun.istack.NotNull;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Data
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

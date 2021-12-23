@@ -6,9 +6,12 @@ import com.movietheater.entity.dto.cinema_room_management.CinemaRoomResponse;
 import com.movietheater.entity.dto.cinema_room_management.SeatResponse;
 import com.movietheater.entity.dto.movie_management.MovieCreation;
 import com.movietheater.entity.dto.movie_management.MovieResponse;
+import com.movietheater.entity.dto.promotion_management.PromotionCreation;
+import com.movietheater.entity.dto.promotion_management.PromotionResponse;
 import com.movietheater.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -101,6 +104,7 @@ public class Mapper {
     }
 
     public void fixDup2(Movie movie, MovieCreation movieCreation){
+
         Set<Type> types = new HashSet<>();
         for (String type : movieCreation.getTypes()) {
             types.add(typeRepository.findByTypeName(type));
@@ -114,12 +118,9 @@ public class Mapper {
 
         CinemaRoom cinemaRoom = cinemaRoomRepository.findByCinemaRoomName(movieCreation.getCinemaRoomName());
 
-        Set<ShowDate> showDates = new HashSet<>();
-        for (ShowDate showDate : showDateRepository.findByShowDateGreaterThanEqualAndShowDateLessThanEqual(
-                movieCreation.getFromDate(), movieCreation.getToDate())) {
-            showDates.add(showDate);
-        }
-        log.info("{}",cinemaRoom);
+        Set<ShowDate> showDates = new HashSet<>(showDateRepository.findByShowDateGreaterThanEqualAndShowDateLessThanEqual(
+                movieCreation.getFromDate(), movieCreation.getToDate()));
+//        log.info("Test {}",cinemaRoom);
         movie.setMovieNameEnglish(movieCreation.getMovieNameEnglish());
         movie.setMovieNameVN(movieCreation.getMovieNameVN());
         movie.setFromDate(movieCreation.getFromDate());
@@ -136,6 +137,31 @@ public class Mapper {
         movie.setSmallImage(movieCreation.getSmallImage());
         movie.setLargeImage(movieCreation.getLargeImage());
         movie.setShowDates(showDates);
+    }
+
+    public PromotionResponse toPromotionResponse(Promotion promotion){
+        return new PromotionResponse(
+                promotion.getPromotionId(),
+                promotion.getTitle(),
+                promotion.getStartTime(),
+                promotion.getEndTime(),
+                promotion.getDiscountLevel(),
+                promotion.getDetail()
+        );
+    }
+
+    public Promotion toPromotion(PromotionCreation promotionCreation){
+        Promotion promotion = new Promotion();
+        mapPromotion(promotion, promotionCreation);
+        return promotion;
+    }
+
+    public void mapPromotion(Promotion promotion, PromotionCreation promotionCreation){
+        promotion.setTitle(promotionCreation.getTitle());
+        promotion.setStartTime(promotionCreation.getStartTime());
+        promotion.setEndTime(promotionCreation.getEndTime());
+        promotion.setDetail(promotionCreation.getDetail());
+        promotion.setImage(promotionCreation.getImage());
     }
 
 }

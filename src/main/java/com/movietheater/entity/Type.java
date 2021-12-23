@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,6 +13,8 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int typeId;
+
+    @Column(nullable = false)
     private String typeName;
 
 
@@ -22,7 +23,5 @@ public class Type {
 //    ,joinColumns = @JoinColumn(name = "type_id")
 //    ,inverseJoinColumns = @JoinColumn(name = "movie_id"))
     private Set<Movie> movies = new HashSet<>();
-
-
 
 }

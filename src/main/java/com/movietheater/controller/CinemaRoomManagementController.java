@@ -7,6 +7,7 @@ import com.movietheater.entity.dto.cinema_room_management.UpdateSeatRequest;
 import com.movietheater.service.CinemaRoomManagementService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class CinemaRoomManagementController {
     }
 
     @PostMapping("/room/add")
-    public String addCinemaRoom(@RequestBody CinemaRoomCreation cinemaRoomCreation){
+    public String addCinemaRoom(@Valid @RequestBody CinemaRoomCreation cinemaRoomCreation){
         return cinemaRoomManagementService.addCinemaRoom(cinemaRoomCreation);
     }
 
@@ -45,7 +46,7 @@ public class CinemaRoomManagementController {
     }
 
     @PutMapping("/seat/update/id/{id}")
-    public String updateTypeSeat(@PathVariable("id") int seatId, @RequestBody UpdateSeatRequest updateSeatRequest){
+    public String updateTypeSeat(@PathVariable("id") int seatId, @Valid @RequestBody UpdateSeatRequest updateSeatRequest){
         return cinemaRoomManagementService.updateTypeSeat(seatId, updateSeatRequest);
     }
 }
