@@ -14,4 +14,6 @@ public interface CinemaRoomRepository extends JpaRepository<CinemaRoom, Integer>
 
     List<CinemaRoom> findByCinemaRoomNameStartingWith(String wildCard);
 
+    CinemaRoom findByCinemaRoomName(String cinemaRoomName);
+
 }

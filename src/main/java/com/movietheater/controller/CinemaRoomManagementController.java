@@ -1,7 +1,7 @@
 package com.movietheater.controller;
 
 import com.movietheater.entity.dto.cinema_room_management.CinemaRoomCreation;
-import com.movietheater.entity.dto.cinema_room_management.CinemaRoomListResponse;
+import com.movietheater.entity.dto.cinema_room_management.CinemaRoomResponse;
 import com.movietheater.entity.dto.cinema_room_management.SeatResponse;
 import com.movietheater.entity.dto.cinema_room_management.UpdateSeatRequest;
 import com.movietheater.service.CinemaRoomManagementService;
@@ -20,17 +20,17 @@ public class CinemaRoomManagementController {
     }
 
     @GetMapping("/room/id/{id}")
-    public CinemaRoomListResponse getByCinemaRoomId(@PathVariable("id") int id){
+    public CinemaRoomResponse getByCinemaRoomId(@PathVariable("id") int id){
         return cinemaRoomManagementService.getByCinemaRoomId(id);
     }
 
     @GetMapping("/room")
-    public List<CinemaRoomListResponse> getAllCinemaRoom(){
+    public List<CinemaRoomResponse> getAllCinemaRoom(){
         return cinemaRoomManagementService.getAllCinemaRoom();
     }
 
     @GetMapping("/room/name/{name}")
-    public List<CinemaRoomListResponse> getByNameLike(@PathVariable("name") String wildCard){
+    public List<CinemaRoomResponse> getByNameLike(@PathVariable("name") String wildCard){
         return cinemaRoomManagementService.getByNameLike(wildCard);
     }
 

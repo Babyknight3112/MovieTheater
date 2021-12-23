@@ -30,9 +30,8 @@ public class CinemaRoom {
     @JoinColumn(name = "ticket_id")
     private  Ticket ticket;
 
-    @OneToMany( mappedBy = "cinemaRoom",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @OneToMany( mappedBy = "cinemaRoom", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany( mappedBy = "cinemaRoom")
     private Set<Movie> movies = new HashSet<>();
-
-
 
 }

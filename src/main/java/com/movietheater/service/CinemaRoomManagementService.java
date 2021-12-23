@@ -3,7 +3,7 @@ package com.movietheater.service;
 import com.movietheater.entity.CinemaRoom;
 import com.movietheater.entity.Seat;
 import com.movietheater.entity.dto.cinema_room_management.CinemaRoomCreation;
-import com.movietheater.entity.dto.cinema_room_management.CinemaRoomListResponse;
+import com.movietheater.entity.dto.cinema_room_management.CinemaRoomResponse;
 import com.movietheater.entity.dto.cinema_room_management.SeatResponse;
 import com.movietheater.entity.dto.cinema_room_management.UpdateSeatRequest;
 import com.movietheater.entity.mapper.Mapper;
@@ -32,17 +32,17 @@ public class CinemaRoomManagementService {
         this.seatRepository = seatRepository;
     }
 
-    public CinemaRoomListResponse getByCinemaRoomId(int id){
+    public CinemaRoomResponse getByCinemaRoomId(int id){
         return mapper.toCinemaRoomResponse(cinemaRoomRepository.findByCinemaRoomId(id));
     }
 
-    public List<CinemaRoomListResponse> getAllCinemaRoom(){
+    public List<CinemaRoomResponse> getAllCinemaRoom(){
         return cinemaRoomRepository.findAll()
                 .stream().map(mapper::toCinemaRoomResponse).collect(Collectors.toList());
 
     }
 
-    public List<CinemaRoomListResponse> getByNameLike(String wildCard){
+    public List<CinemaRoomResponse> getByNameLike(String wildCard){
         return cinemaRoomRepository
                 .findByCinemaRoomNameStartingWith(wildCard)
                 .stream().map(mapper::toCinemaRoomResponse).collect(Collectors.toList());
