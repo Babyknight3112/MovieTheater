@@ -47,6 +47,11 @@ public class Movie {
 
     private String smallImage;
 
+    @Column(nullable = false)
+    private String allType;
+
+    @Column(nullable = false)
+    private String allSchedule;
 
 //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "movie_date"

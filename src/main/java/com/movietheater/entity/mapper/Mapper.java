@@ -110,6 +110,10 @@ public class Mapper {
             types.add(typeRepository.findByTypeName(type));
         }
 
+        String allType = String.join(", ", movieCreation.getTypes());
+
+        String allSchedule = String.join(", ", movieCreation.getSchedules().toString());
+
         Set<Schedule> schedules = new HashSet<>();
 //        List<Schedule> schedules = new ArrayList<>();
         for (String schedule: movieCreation.getSchedules()) {
@@ -121,6 +125,9 @@ public class Mapper {
         Set<ShowDate> showDates = new HashSet<>(showDateRepository.findByShowDateGreaterThanEqualAndShowDateLessThanEqual(
                 movieCreation.getFromDate(), movieCreation.getToDate()));
 //        log.info("Test {}",cinemaRoom);
+
+
+
         movie.setMovieNameEnglish(movieCreation.getMovieNameEnglish());
         movie.setMovieNameVN(movieCreation.getMovieNameVN());
         movie.setFromDate(movieCreation.getFromDate());
@@ -137,6 +144,8 @@ public class Mapper {
         movie.setSmallImage(movieCreation.getSmallImage());
         movie.setLargeImage(movieCreation.getLargeImage());
         movie.setShowDates(showDates);
+        movie.setAllType(allType);
+        movie.setAllSchedule(allSchedule);
     }
 
     public PromotionResponse toPromotionResponse(Promotion promotion){
